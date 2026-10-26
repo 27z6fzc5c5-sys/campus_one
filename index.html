@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Campus One — личная система студента для расписания, дедлайнов, заметок и подготовки к экзаменам.">
+  <title>Campus One — твой учебный центр</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-row">
+      <div class="brand-mark"><span>c</span><i>+</i></div>
+      <div class="brand-copy"><strong>campus<span>one</span></strong><small>STUDENT OS</small></div>
+      <button class="icon-btn mobile-only" id="closeSidebar" aria-label="Закрыть меню">×</button>
+    </div>
+
+    <div class="profile-mini">
+      <div class="avatar" id="avatarInitials">СМ</div>
+      <div class="profile-text"><strong id="profileName">Сабрина М.</strong><small id="profileCourse">3 курс · Software</small></div>
+      <span class="status-dot"></span>
+    </div>
+
+    <div class="nav-label" data-i18n="workspace">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <button class="nav-item active" data-page="dashboard"><span class="nav-icon">◫</span><span data-i18n="nav_dashboard">Обзор</span><span class="nav-shortcut">01</span></button>
+      <button class="nav-item" data-page="planner"><span class="nav-icon">☷</span><span data-i18n="nav_planner">Планировщик</span><span class="nav-badge" id="navTaskCount">0</span></button>
+      <button class="nav-item" data-page="timetable"><span class="nav-icon">▦</span><span data-i18n="nav_timetable">Расписание</span></button>
+      <button class="nav-item" data-page="subjects"><span class="nav-icon">▤</span><span data-i18n="nav_subjects">Предметы</span></button>
+      <button class="nav-item" data-page="notes"><span class="nav-icon">✎</span><span data-i18n="nav_notes">Мои заметки</span></button>
+      <button class="nav-item" data-page="exams"><span class="nav-icon">◈</span><span data-i18n="nav_exams">Экзамены</span><span class="nav-badge subtle" id="navExamCount">0</span></button>
+    </nav>
+
+    <div class="nav-label second-label" data-i18n="your_rhythm">ТВОЙ РИТМ</div>
+    <nav class="main-nav">
+      <button class="nav-item" data-page="focus"><span class="nav-icon">◷</span><span data-i18n="nav_focus">Фокус-комната</span></button>
+      <button class="nav-item" data-page="lab"><span class="nav-icon">✧</span><span data-i18n="nav_lab">Учебная лаборатория</span></button>
+      <button class="nav-item" data-page="habits"><span class="nav-icon">✳</span><span data-i18n="nav_habits">Привычки</span></button>
+      <button class="nav-item" data-page="budget"><span class="nav-icon">◉</span><span data-i18n="nav_budget">Студенческий бюджет</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="semester-card">
+        <div class="semester-top"><span data-i18n="semester">СЕМЕСТР</span><span class="tiny-spark">✦</span></div>
+        <strong id="semesterProgressText">68%</strong>
+        <div class="mini-progress"><span id="semesterProgressBar" style="width:68%"></span></div>
+        <small data-i18n="semester_caption">Ты ближе к цели, чем кажется.</small>
+      </div>
+      <button class="nav-item settings-link" data-page="settings"><span class="nav-icon">⚙</span><span data-i18n="nav_settings">Настройки</span></button>
+      <div class="sidebar-foot">MADE FOR YOUR NEXT LEVEL <span>✦</span></div>
+    </div>
+  </aside>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+  <main class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+        <div class="breadcrumb"><span data-i18n="breadcrumb_home">Моё пространство</span><span class="crumb-slash">/</span><strong id="currentCrumb">Обзор</strong></div>
+      </div>
+      <div class="topbar-actions">
+        <div class="date-pill"><span class="date-dot"></span><span id="todayDate">Понедельник, 26 октября</span></div>
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Сменить тему" aria-label="Сменить тему">☼</button>
+        <button class="top-avatar" id="openProfile" title="Профиль">СМ</button>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- DASHBOARD -->
+      <section class="page active" id="page-dashboard" data-title="Обзор">
+        <div class="hero-banner">
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-star star-one">✦</div><div class="hero-star star-two">✧</div>
+          <div class="hero-content">
+            <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="hero_eyebrow">ТВОЙ ПРОГРЕСС — ТВОИ ПРАВИЛА</span></div>
+            <h1><span data-i18n="hello">Привет,</span> <em id="heroName">Сабрина</em><span class="wave">✦</span></h1>
+            <p data-i18n="hero_subtitle">Не нужно успевать всё. Нужно понимать, что важно сегодня.</p>
+            <div class="hero-actions"><button class="btn btn-primary" data-action="quick-task"><span>＋</span><span data-i18n="add_task">Добавить задачу</span></button><button class="btn btn-ghost" data-goto="timetable"><span data-i18n="view_schedule">Посмотреть расписание</span><span>↗</span></button></div>
+          </div>
+          <div class="hero-illustration" aria-hidden="true">
+            <div class="planet-ring ring-a"></div><div class="planet-ring ring-b"></div><div class="hero-planet"><div class="planet-shine"></div></div>
+            <div class="floating-card fc-top"><span class="float-icon">✦</span><div><strong>+24%</strong><small data-i18n="focus_growth">фокус за неделю</small></div></div>
+            <div class="floating-card fc-bottom"><span class="check-orb">✓</span><div><strong data-i18n="small_win">Маленькая победа</strong><small data-i18n="small_win_sub">Твой день уже начался</small></div></div>
+          </div>
+        </div>
+
+        <div class="section-heading overview-heading"><div><div class="section-kicker" data-i18n="at_a_glance">КАРТИНА ДНЯ</div><h2 data-i18n="your_dashboard">Твой учебный ритм</h2></div><button class="text-link" data-goto="planner"><span data-i18n="all_tasks">Все задачи</span><span>→</span></button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon lavender">☷</span><span class="stat-trend positive">↗ <b>12%</b></span></div><div class="stat-value" id="statTasks">0</div><div class="stat-label" data-i18n="tasks_this_week">Задач на этой неделе</div><div class="stat-bottom"><div class="stat-tiny-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span data-i18n="keep_going">Продолжай в том же духе</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon mint">◷</span><span class="stat-trend positive" id="focusTrend">✦</span></div><div class="stat-value"><span id="statFocus">0</span><small data-i18n="hours_short"> ч</small></div><div class="stat-label" data-i18n="focused_this_week">Фокус-часов за неделю</div><div class="stat-bottom"><div class="micro-line"><svg viewBox="0 0 130 26" preserveAspectRatio="none"><path d="M2 22 C16 20,20 4,35 13 S57 20,68 10 S87 17,99 7 S117 9,128 2" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg></div><span data-i18n="little_by_little">Маленькими шагами</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon peach">◈</span><span class="stat-trend neutral">● <b data-i18n="planned">в плане</b></span></div><div class="stat-value" id="statExams">0</div><div class="stat-label" data-i18n="upcoming_exams">Ближайших экзаменов</div><div class="stat-bottom"><div class="stat-avatars"><span>JS</span><span>DB</span><span>+2</span></div><span data-i18n="prepare_early">Готовься заранее</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon blue">✓</span><span class="stat-trend positive" id="statTaskPercent">0%</span></div><div class="stat-value" id="statDone">0</div><div class="stat-label" data-i18n="completed_tasks">Выполнено задач</div><div class="stat-bottom"><div class="thin-progress"><span id="taskProgressLine"></span></div><span data-i18n="you_can_do_it">Ты справишься</span></div></article>
+        </div>
+
+        <div class="dashboard-columns">
+          <section class="panel today-panel"><div class="panel-heading"><div><div class="section-kicker" data-i18n="keep_on_radar">ДЕРЖИ В ПОЛЕ ЗРЕНИЯ</div><h3 data-i18n="today_plan">План на сегодня</h3></div><button class="round-link" data-goto="planner">↗</button></div><div id="todayTaskList" class="today-task-list"></div><button class="add-row-btn" data-action="quick-task"><span>＋</span><span data-i18n="add_to_plan">Добавить в план</span></button></section>
+          <section class="panel week-panel"><div class="panel-heading"><div><div class="section-kicker" data-i18n="consistency_wins">РЕГУЛЯРНОСТЬ РЕШАЕТ</div><h3 data-i18n="week_activity">Активность за неделю</h3></div><span class="select-tag" data-i18n="last_7_days">Последние 7 дней</span></div><div class="week-chart" id="weekChart"></div><div class="chart-footer"><span><i class="legend-dot purple-dot"></i><span data-i18n="study_sessions">Учебные сессии</span></span><strong id="chartTotal">0 <small data-i18n="sessions">сессий</small></strong></div></section>
+        </div>
+
+        <div class="dashboard-columns lower-columns">
+          <section class="panel agenda-panel"><div class="panel-heading"><div><div class="section-kicker" data-i18n="coming_up">ДАЛЬШЕ ПО ПЛАНУ</div><h3 data-i18n="next_classes">Ближайшие занятия</h3></div><button class="text-link small-link" data-goto="timetable"><span data-i18n="full_schedule">Всё расписание</span> →</button></div><div id="nextClasses" class="agenda-list"></div></section>
+          <section class="panel subject-progress-panel"><div class="panel-heading"><div><div class="section-kicker" data-i18n="learn_smart">УЧИСЬ УМНО</div><h3 data-i18n="subject_progress">Прогресс по предметам</h3></div><button class="round-link" data-goto="subjects">↗</button></div><div id="subjectProgress" class="subject-progress-list"></div></section>
+        </div>
+      </section>
+
+      <!-- PLANNER -->
+      <section class="page" id="page-planner" data-title="Планировщик">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="make_it_happen">ПРЕВРАЩАЙ ПЛАНЫ В РЕЗУЛЬТАТ</div><h1 data-i18n="planner_title">Планировщик задач</h1><p data-i18n="planner_desc">Большие цели становятся легче, когда разбиты на маленькие шаги.</p></div><button class="btn btn-primary" data-action="quick-task">＋ <span data-i18n="new_task">Новая задача</span></button></div>
+        <div class="toolbar"><div class="search-box"><span>⌕</span><input id="taskSearch" type="search" placeholder="Найти задачу..." data-i18n-placeholder="search_task"></div><div class="filter-pills" id="taskFilters"><button class="filter-pill active" data-filter="all" data-i18n="filter_all">Все</button><button class="filter-pill" data-filter="active" data-i18n="filter_active">В процессе</button><button class="filter-pill" data-filter="done" data-i18n="filter_done">Готово</button><button class="filter-pill" data-filter="today" data-i18n="filter_today">На сегодня</button></div></div>
+        <div class="task-summary-strip" id="taskSummary"></div><div class="task-board" id="taskBoard"></div>
+      </section>
+
+      <!-- TIMETABLE -->
+      <section class="page" id="page-timetable" data-title="Расписание">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="time_is_yours">ВРЕМЯ ПОД КОНТРОЛЕМ</div><h1 data-i18n="timetable_title">Моё расписание</h1><p data-i18n="timetable_desc">Планируй неделю так, чтобы осталось время на жизнь.</p></div><button class="btn btn-primary" data-action="add-class">＋ <span data-i18n="add_class">Добавить занятие</span></button></div>
+        <div class="calendar-toolbar"><button class="icon-btn" id="prevWeek">←</button><strong id="weekLabel">Неделя</strong><button class="icon-btn" id="nextWeek">→</button><button class="btn btn-soft" id="currentWeek" data-i18n="this_week">Эта неделя</button></div>
+        <div class="timetable-wrap"><div class="timetable-grid" id="timetableGrid"></div></div><div class="schedule-legend" id="scheduleLegend"></div>
+      </section>
+
+      <!-- SUBJECTS -->
+      <section class="page" id="page-subjects" data-title="Предметы">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="your_knowledge_map">ТВОЯ КАРТА ЗНАНИЙ</div><h1 data-i18n="subjects_title">Мои предметы</h1><p data-i18n="subjects_desc">Собери всё обучение в одном месте и отслеживай прогресс.</p></div><button class="btn btn-primary" data-action="add-subject">＋ <span data-i18n="add_subject">Добавить предмет</span></button></div>
+        <div class="subjects-summary" id="subjectsSummary"></div><div class="subjects-grid" id="subjectsGrid"></div>
+      </section>
+
+      <!-- NOTES -->
+      <section class="page" id="page-notes" data-title="Мои заметки">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="capture_ideas">НЕ ТЕРЯЙ ХОРОШИЕ МЫСЛИ</div><h1 data-i18n="notes_title">База знаний</h1><p data-i18n="notes_desc">Конспекты, идеи и важные формулы — всё под рукой.</p></div><button class="btn btn-primary" data-action="add-note">＋ <span data-i18n="new_note">Новая заметка</span></button></div>
+        <div class="toolbar"><div class="search-box"><span>⌕</span><input id="noteSearch" type="search" placeholder="Поиск по заметкам..." data-i18n-placeholder="search_notes"></div><select id="noteSubjectFilter" class="select-control"><option value="all" data-i18n="all_subjects">Все предметы</option></select><button class="view-toggle active" id="noteGridView" title="Сетка">▦</button><button class="view-toggle" id="noteListView" title="Список">☷</button></div>
+        <div id="pinnedNotes"></div><div class="notes-grid" id="notesGrid"></div>
+      </section>
+
+      <!-- EXAMS -->
+      <section class="page" id="page-exams" data-title="Экзамены">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="calm_is_prepared">СПОКОЙСТВИЕ — ЭТО ПОДГОТОВКА</div><h1 data-i18n="exams_title">Экзамены без паники</h1><p data-i18n="exams_desc">Следи за датами и готовься постепенно, а не в последнюю ночь.</p></div><button class="btn btn-primary" data-action="add-exam">＋ <span data-i18n="add_exam">Добавить экзамен</span></button></div>
+        <div class="exam-hero" id="examHero"></div><div class="exams-list" id="examsList"></div>
+      </section>
+
+      <!-- FOCUS -->
+      <section class="page" id="page-focus" data-title="Фокус-комната">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="deep_work_mode">РЕЖИМ ГЛУБОКОЙ РАБОТЫ</div><h1 data-i18n="focus_title">Фокус-комната</h1><p data-i18n="focus_desc">Одна задача за раз. Остальное подождёт.</p></div><div class="focus-total-pill"><span class="pulse-dot"></span><span data-i18n="focus_room_ready">Комната готова к работе</span></div></div>
+        <div class="focus-layout"><section class="focus-main-card"><div class="focus-mode-tabs" id="focusModes"><button class="focus-mode active" data-minutes="25" data-break="false" data-i18n="focus_mode">Фокус</button><button class="focus-mode" data-minutes="5" data-break="true" data-i18n="short_break">Короткий перерыв</button><button class="focus-mode" data-minutes="45" data-break="false" data-i18n="long_focus">Длинный фокус</button></div><div class="timer-stage"><div class="timer-glow"></div><svg class="timer-ring" viewBox="0 0 300 300" aria-hidden="true"><circle class="timer-track" cx="150" cy="150" r="132"></circle><circle class="timer-progress" id="timerProgress" cx="150" cy="150" r="132"></circle></svg><div class="timer-center"><span id="timerModeLabel" data-i18n="focus_session">ФОКУС-СЕССИЯ</span><strong id="timerDisplay">25:00</strong><small id="timerCaption" data-i18n="ready_when_you_are">Ты готова, когда готова</small></div></div><div class="timer-controls"><button class="btn btn-primary timer-start" id="timerStart"><span>▶</span> <span data-i18n="start_focus">Начать фокус</span></button><button class="btn btn-soft" id="timerReset" data-i18n="reset_timer">Сбросить</button></div><div class="focus-intention"><span class="intention-icon">✧</span><div><strong data-i18n="set_intention">Задай намерение</strong><input id="focusIntention" placeholder="Например: разобраться с JOIN в SQL" data-i18n-placeholder="focus_placeholder"></div><button class="icon-btn" id="saveIntention" title="Сохранить">✓</button></div></section><section class="focus-side"><div class="panel focus-stats-card"><div class="section-kicker" data-i18n="your_focus_today">ТВОЙ ФОКУС СЕГОДНЯ</div><h3><span id="focusTodayMinutes">0</span> <small data-i18n="minutes_short">мин</small></h3><p data-i18n="every_minute_counts">Каждая минута имеет значение.</p><div class="focus-week-bars" id="focusWeekBars"></div><div class="focus-week-labels" id="focusWeekLabels"></div></div><div class="panel session-history"><div class="panel-heading"><h3 data-i18n="recent_sessions">Последние сессии</h3><span class="history-count" id="sessionCount">0</span></div><div id="sessionHistory"></div></div><div class="quote-card"><span>“</span><p data-i18n="focus_quote">Ты не обязана делать всё сразу. Просто начни с одного шага.</p><small>— CAMPUS NOTE</small></div></section></div>
+      </section>
+
+      <!-- LAB -->
+      <section class="page" id="page-lab" data-title="Учебная лаборатория">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="active_recall">УЧИСЬ ЧЕРЕЗ ПРАКТИКУ</div><h1 data-i18n="lab_title">Учебная лаборатория</h1><p data-i18n="lab_desc">Карточки, мини-тесты и активное повторение вместо бесконечного перечитывания.</p></div><button class="btn btn-primary" data-action="add-flashcard">＋ <span data-i18n="add_flashcard">Добавить карточку</span></button></div>
+        <div class="lab-tabs" id="labTabs"><button class="lab-tab active" data-lab="cards"><span>▧</span><span data-i18n="flashcards">Карточки</span></button><button class="lab-tab" data-lab="quiz"><span>✧</span><span data-i18n="quick_quiz">Быстрый тест</span></button><button class="lab-tab" data-lab="review"><span>↻</span><span data-i18n="review_queue">Повторение</span><span class="tab-count" id="reviewCount">0</span></button></div>
+        <div class="lab-content" id="labContent"></div>
+      </section>
+
+      <!-- HABITS -->
+      <section class="page" id="page-habits" data-title="Привычки">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="small_steps_big_change">МАЛЕНЬКИЕ ШАГИ — БОЛЬШИЕ ПЕРЕМЕНЫ</div><h1 data-i18n="habits_title">Привычки, которые растят</h1><p data-i18n="habits_desc">Не гонись за идеалом. Отмечай то, что получилось сегодня.</p></div><button class="btn btn-primary" data-action="add-habit">＋ <span data-i18n="add_habit">Новая привычка</span></button></div>
+        <div class="habits-streak-banner" id="habitsBanner"></div><div class="habits-week" id="habitsWeek"></div><div class="habits-list" id="habitsList"></div>
+      </section>
+
+      <!-- BUDGET -->
+      <section class="page" id="page-budget" data-title="Студенческий бюджет">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="money_with_a_plan">ДЕНЬГИ ТОЖЕ ЛЮБЯТ ПЛАН</div><h1 data-i18n="budget_title">Мой студенческий бюджет</h1><p data-i18n="budget_desc">Понимай, куда уходят деньги, и оставляй место для своих целей.</p></div><button class="btn btn-primary" data-action="add-expense">＋ <span data-i18n="add_expense">Добавить расход</span></button></div>
+        <div class="budget-summary-grid" id="budgetSummary"></div><div class="budget-layout"><section class="panel budget-transactions"><div class="panel-heading"><div><div class="section-kicker" data-i18n="money_flow">ДВИЖЕНИЕ ДЕНЕГ</div><h3 data-i18n="recent_transactions">Последние операции</h3></div><select id="budgetFilter" class="select-control"><option value="all" data-i18n="all_operations">Все операции</option><option value="expense" data-i18n="expenses_only">Расходы</option><option value="income" data-i18n="income_only">Доходы</option></select></div><div id="transactionsList"></div></section><section class="panel budget-insights"><div class="section-kicker" data-i18n="where_it_goes">КУДА УХОДИТ</div><h3 data-i18n="spending_breakdown">Структура расходов</h3><div id="budgetBreakdown"></div><div class="budget-tip"><span>✦</span><p data-i18n="budget_tip">Совет: запиши даже маленькие расходы — так ты увидишь реальную картину.</p></div></section></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page" id="page-settings" data-title="Настройки">
+        <div class="page-title-row"><div><div class="section-kicker" data-i18n="make_it_yours">НАСТРОЙ ПОД СЕБЯ</div><h1 data-i18n="settings_title">Настройки пространства</h1><p data-i18n="settings_desc">Твой учебный центр должен работать под тебя, а не наоборот.</p></div></div>
+        <div class="settings-layout"><section class="panel settings-section"><div class="settings-section-head"><span class="settings-icon">♙</span><div><h3 data-i18n="profile_settings">Профиль</h3><p data-i18n="profile_settings_desc">Как обращаться к тебе в Campus One.</p></div></div><form id="profileForm" class="settings-form"><label><span data-i18n="your_name">Твоё имя</span><input id="settingName" required maxlength="50" value="Сабрина"></label><label><span data-i18n="course_and_specialty">Курс и направление</span><input id="settingCourse" maxlength="80" value="3 курс · Software Engineering"></label><button class="btn btn-primary" type="submit" data-i18n="save_profile">Сохранить профиль</button></form></section>
+        <section class="panel settings-section"><div class="settings-section-head"><span class="settings-icon">文</span><div><h3 data-i18n="language_settings">Язык интерфейса</h3><p data-i18n="language_desc">Выбирай удобный язык для ежедневной учёбы.</p></div></div><div class="option-row"><div><strong>Русский</strong><small>Русский интерфейс</small></div><button class="language-choice" data-lang="ru">RU <span>✓</span></button></div><div class="option-row"><div><strong>Тоҷикӣ</strong><small>Интерфейси тоҷикӣ</small></div><button class="language-choice" data-lang="tj">TJ <span>✓</span></button></div></section>
+        <section class="panel settings-section"><div class="settings-section-head"><span class="settings-icon">◐</span><div><h3 data-i18n="appearance">Внешний вид</h3><p data-i18n="appearance_desc">Светлая или тёмная тема — выбирай по настроению.</p></div></div><div class="theme-options"><button class="theme-option" data-theme="dark"><span class="theme-preview dark-preview">◐</span><strong data-i18n="dark_theme">Тёмная</strong><small data-i18n="dark_theme_desc">Для вечернего фокуса</small></button><button class="theme-option" data-theme="light"><span class="theme-preview light-preview">☼</span><strong data-i18n="light_theme">Светлая</strong><small data-i18n="light_theme_desc">Для ясного дня</small></button></div></section>
+        <section class="panel settings-section"><div class="settings-section-head"><span class="settings-icon">⇧</span><div><h3 data-i18n="your_data">Твои данные</h3><p data-i18n="data_desc">Данные хранятся в этом браузере. Делай резервную копию.</p></div></div><div class="data-actions"><button class="btn btn-soft" id="exportData">↓ <span data-i18n="export_backup">Экспортировать резервную копию</span></button><label class="btn btn-soft import-label">↑ <span data-i18n="import_backup">Импортировать копию</span><input type="file" id="importData" accept="application/json,.json" hidden></label><button class="btn btn-danger-soft" id="resetData" data-i18n="reset_all">Сбросить все данные</button></div><p class="settings-warning" data-i18n="data_warning">Важно: сброс нельзя отменить. Перед ним скачай резервную копию.</p></section></div>
+      </section>
+    </div>
+    <footer class="app-footer"><span>© 2026 CAMPUS ONE</span><span data-i18n="footer_message">Создано для твоего следующего уровня <b>✦</b></span><button data-goto="settings" class="footer-link" data-i18n="privacy_local">Локальные данные</button></footer>
+  </main>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-heading"><div><div class="section-kicker" id="modalKicker">CAMPUS ONE</div><h2 id="modalTitle">Создать</h2></div><button class="icon-btn modal-close" id="modalClose" aria-label="Закрыть">×</button></div><div id="modalBody"></div></section></div>
+
+<script src="app.js"></script>
+</body>
+</html>
